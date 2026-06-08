@@ -1,0 +1,76 @@
+{
+  "theme": "Light",
+  "archetype": "Organic & Earthy",
+  "design_philosophy": "A clean, modern, and friendly mobile-first health app. Replacing clinical interfaces with warm, encouraging 'bubbly' aesthetics while prioritizing clarity for daily macro tracking.",
+  "colors": {
+    "primary": "#2563EB",
+    "primary_hover": "#1D4ED8",
+    "background": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "text_main": "#0F172A",
+    "text_muted": "#64748B",
+    "macros": {
+      "protein": "#3B82F6",
+      "carbs": "#F59E0B",
+      "fat": "#10B981"
+    },
+    "borders": "#E2E8F0"
+  },
+  "typography": {
+    "headings": {
+      "font": "Nunito",
+      "fallback": "sans-serif",
+      "style": "Friendly, slightly rounded, tracking-tight",
+      "weights": ["700", "800"]
+    },
+    "body": {
+      "font": "Work Sans",
+      "fallback": "sans-serif",
+      "style": "Clean, highly readable geometric sans",
+      "weights": ["400", "500", "600"]
+    }
+  },
+  "spacing_and_layout": {
+    "general": "Mobile-first approach. App container should be max-w-md mx-auto min-h-screen bg-background relative shadow-2xl sm:rounded-[3rem] sm:border-[8px] sm:border-slate-800 sm:my-8 sm:overflow-hidden.",
+    "padding": "p-4 to p-6 for screen edges. Nested elements use p-3 to p-4.",
+    "radii": "Generous border-radius. rounded-3xl for main cards, rounded-2xl for inner blocks, rounded-full for buttons.",
+    "shadows": "Soft ambient shadows: shadow-[0_8px_30px_rgb(0,0,0,0.04)] for cards."
+  },
+  "components": {
+    "bottom_navigation": {
+      "style": "Fixed bottom, z-50 w-full max-w-md mx-auto bg-white/90 backdrop-blur-xl flex justify-around items-center py-4 rounded-t-3xl border-t border-slate-100",
+      "active_state": "Primary color icon with small dot indicator or subtle background pill"
+    },
+    "dashboard": {
+      "header": "Welcome message with date, streak, and profile avatar. Flex-row, items-center.",
+      "macro_bento": "Large central radial progress for calories. Three smaller vertical bars or mini-rings for Protein, Carbs, Fat underneath or alongside.",
+      "cards": "Solid white backgrounds. Use subtle 1px border-slate-100 to prevent muddiness."
+    },
+    "camera_scanner": {
+      "layout": "Full-screen fixed layout (h-full w-full bg-black z-50 relative).",
+      "viewfinder": "Central rounded rectangle cutout with scanning animation (a moving horizontal line or corner brackets).",
+      "overlay": "Bottom sheet (rounded-t-3xl bg-white p-6 absolute bottom-0 w-full shadow-[0_-10px_40px_rgba(0,0,0,0.1)]) that slides up when an item is detected.",
+      "mode_switch": "Pill-shaped toggle floating at the bottom above the sheet to switch between 'Barcode' and 'AI Food Scan'."
+    },
+    "buttons": {
+      "primary": "bg-blue-600 text-white rounded-full py-4 px-6 font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg active:scale-95"
+    }
+  },
+  "motion_and_interaction": {
+    "hover": "Subtle scale up (scale-105) for interactive icons, active:scale-95 for buttons.",
+    "transitions": "transition-all duration-300 ease-out",
+    "loaders": "Pulse animation for scanning states."
+  },
+  "media_and_icons": {
+    "icon_library": "lucide-react",
+    "images": {
+      "recent_meal_1": "https://images.pexels.com/photos/8119916/pexels-photo-8119916.jpeg",
+      "recent_meal_2": "https://images.unsplash.com/photo-1604259596863-57153177d40b"
+    }
+  },
+  "testing_attributes": {
+    "rule": "ALL interactive elements MUST have a data-testid attribute.",
+    "format": "kebab-case, role-based",
+    "examples": ["data-testid='tab-dashboard'", "data-testid='scan-barcode-btn'", "data-testid='log-food-submit'"]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "summary": "Iteration 3 backend testing complete. Added 7 new pytest cases for the 2 new AI endpoints: POST /api/coach-chat (3 tests) and POST /api/exercise-estimate (4 tests). All 24/24 tests PASSED in 49s, including the original 17 regression tests (analyze-food, barcode-lookup, food/weight/water/activity log CRUD, food-search, parse-food-text, recipes CRUD, weekly-summary, water-log DELETE). Coach-chat returns topical pre-workout advice (mentions carbs/protein/snack), handles multi-turn history, and returns 400 on empty message. Exercise-estimate returns activity/met/calories_burned/intensity/note/duration_minutes, basketball 45m@75kg moderate produced calories in the expected 200-600 kcal range, invalid intensity 'extreme' correctly defaults to 'moderate', and 'hard' burns strictly more than 'easy' for cycling 30m@70kg. No mongo _id leakage detected.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "POST /api/coach-chat", "issue": "Dead code: first loop over req.history[-6:] in coach_chat() does nothing (only sets unused locals); only the second loop over [-4:] is used. Cosmetic only - no functional impact."},
+      {"endpoint": "tests/test_macrotrack.py", "issue": "BASE_URL uses hardcoded fallback 'https://vision-mobile-hub.preview.emergentagent.com'. Works because EXPO_PUBLIC_BACKEND_URL matches, but per system guidelines tests should fail-fast on missing env."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "react_native_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_macrotrack.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "(Optional) Remove dead first history loop in /app/backend/server.py coach_chat() lines 446-452 - the variables role/content are computed but never used."
+  ],
+  "critical_code_review_comments": [
+    "server.py coach_chat: first history loop is no-op dead code (computes role/content then discards). Functional logic is in the second loop. Recommend deletion for clarity.",
+    "exercise_estimate has solid defensive fallbacks (MET fallback if AI returns 0, intensity validation, min weight/duration clamping). Good defensive design.",
+    "Both new endpoints correctly use _extract_json() helper and raise 502 on Gemini failures rather than leaking exceptions.",
+    "No MongoDB persistence in coach-chat or exercise-estimate - intentional (stateless AI calls), confirmed acceptable."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_macrotrack.py (added TestCoachChat and TestExerciseEstimate classes, 7 new tests)"
+  ],
+  "success_rate": {"backend": "100% (24/24)", "frontend": "not tested - backend only request"},
+  "seed_data_creation": "None - all test data prefixed TEST_ and cleaned up where applicable.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All 24 backend tests pass in /app/backend/tests/test_macrotrack.py against the public URL. Coach-chat and exercise-estimate are real Gemini calls (~3-6s each), full suite runs in ~50s. EMERGENT_LLM_KEY is configured. Frontend not tested this iteration (backend-only request).",
+  "rca_of_issue": "N/A - no bugs to RCA. Both new endpoints work end-to-end as designed."
+}
