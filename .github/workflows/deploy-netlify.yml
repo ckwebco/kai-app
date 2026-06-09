@@ -19,8 +19,8 @@ jobs:
           node-version: 18
 
       - name: Install frontend dependencies
-  run: npm install
-  working-directory: frontend
+        run: npm install
+        working-directory: frontend
 
       - name: Build web bundle (Expo)
         run: npx expo export:web --output-dir web-build
