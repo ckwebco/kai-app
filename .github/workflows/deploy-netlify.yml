@@ -8,8 +8,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (including submodules)
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -17,8 +19,8 @@ jobs:
           node-version: 18
 
       - name: Install frontend dependencies
-        run: npm ci
-        working-directory: frontend
+  run: npm install
+  working-directory: frontend
 
       - name: Build web bundle (Expo)
         run: npx expo export:web --output-dir web-build
