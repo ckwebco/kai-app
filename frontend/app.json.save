@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "MacroTrack AI",
+    "slug": "frontend",
+ "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "frontend",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+  "bundleIdentifier": "com.nibblets.frontend",
+  "supportsTablet": true,
+  "infoPlist": {
+    "NSCameraUsageDescription": "Scan food and barcodes to log nutrition",
+    "NSMotionUsageDescription": "Count steps to track daily activity"
+  "ios": {
+  "bundleIdentifier": "com.nibblets.frontend",
+  "supportsTablet": true,
+  "infoPlist": {
+    "NSCameraUsageDescription": "Scan food and barcodes to log nutrition",
+    "NSMotionUsageDescription": "Count steps to track daily activity"
+  }
+}"ios": {
+  "bundleIdentifier": "com.nibblets.frontend",
+  "supportsTablet": true,
+  "infoPlist": {
+    "NSCameraUsageDescription": "Scan food and barcodes to log nutrition",
+    "NSMotionUsageDescription": "Count steps to track daily activity"
+  }
+}
+    "android": {      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#F8FAFC"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.ACTIVITY_RECOGNITION"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#F8FAFC"
+        }
+      ],
+      "expo-font",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow MacroTrack AI to use your camera to scan food and barcodes."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "backendUrl": "http://192.168.1.97:8000",
+      "router": {},
+      "eas": {
+        "projectId": "08da7030-1b30-40d6-be16-353e77523253"
+      }
+    }
+  }
+}

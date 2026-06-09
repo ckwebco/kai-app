@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "MacroTrack AI",
+    "slug": "frontend",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "frontend",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "bundleIdentifier": "com.nibblets.frontend",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Scan food and barcodes to log nutrition",
+        "NSMotionUsageDescription": "Count steps to track daily activity",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#F8FAFC"
+      },
+      "package": "com.nibblets.frontend"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+  "backendUrl": "https://macrotrack-backend.onrender.com",
+  "router": {},
+      "eas": {
+        "projectId": "08da7030-1b30-40d6-be16-353e77523253"
+      }
+    }
+  }
+}
