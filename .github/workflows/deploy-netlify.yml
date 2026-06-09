@@ -22,14 +22,12 @@ jobs:
         run: npm ci
         working-directory: frontend
 
-      - name: Build web bundle (Expo)
-        run: npx expo export:web --output-dir web-build
+      - name: Build web bundle (skipped — using committed `dist`)
+        run: echo "Using committed frontend/dist as web build output"
         working-directory: frontend
-        env:
-          EXPO_NO_DOCTOR: 1
 
       - name: Deploy to Netlify
-        run: npx netlify-cli deploy --dir=web-build --prod --site=$NETLIFY_SITE_ID
+        run: npx netlify-cli deploy --dir=dist --prod --site=$NETLIFY_SITE_ID
         working-directory: frontend
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
